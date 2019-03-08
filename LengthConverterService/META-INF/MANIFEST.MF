@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: LengthConverterService
+Bundle-SymbolicName: LengthConverterService
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: lengthconverterservice.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: LengthConverterService
+Import-Package: org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: lengthconverterservice

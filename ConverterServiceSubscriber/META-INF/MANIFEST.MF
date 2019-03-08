@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ConverterServiceSubscriber
+Bundle-SymbolicName: ConverterServiceSubscriber
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: converterservicesubscriber.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: ConverterServiceSubscriber
+Import-Package: converterservice,
+ org.osgi.framework;version="1.3.0",
+ org.osgi.util.tracker;version="1.5.2"
+Bundle-ActivationPolicy: lazy
+Require-Bundle: ConverterService;bundle-version="1.0.0"
