@@ -8,6 +8,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: ConverterService
 Import-Package: lengthconverterservice,
  org.osgi.framework;version="1.3.0",
- org.osgi.util.tracker;version="1.5.2"
+ org.osgi.util.tracker;version="1.5.2",
+ weightconverterservice
 Bundle-ActivationPolicy: lazy
 Export-Package: converterservice
