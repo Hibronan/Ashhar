@@ -7,27 +7,20 @@ import org.osgi.framework.BundleContext;
 
 public class Activator implements BundleActivator {
 
-//	private static BundleContext context;
-
-	/*
-	 * static BundleContext getContext() { return context; }
-	 */
+	@Override
 	public void start(BundleContext bundleContext) throws Exception {
 		System.out.println("Currency Service Started !");
 		bundleContext.registerService(CurrencyService.class.getName(), new CurrencyServiceImp(), null);
-		//Activator.context = bundleContext;
 	}
 
+	@Override
 	public void stop(BundleContext bundleContext) throws Exception {
-//		Activator.context = null;
 		System.out.println("Currency Service Stopped !");
 	}
 	
 	public static class CurrencyServiceImp implements CurrencyService{
-
 		@Override
 		public void publishCurrencyService() {
-			// TODO Auto-generated method stub
 			System.out.println("Select the length Service Conversion\n"
 					+ 		   "1. LKR to USD\n"
 					+          "2. USD to LKR\n"
@@ -85,10 +78,6 @@ public class Activator implements BundleActivator {
 			}else {
 				System.out.println("Invalid Input !");
 			}
-		}
-		
-		
-		
+		}	
 	}
-
 }

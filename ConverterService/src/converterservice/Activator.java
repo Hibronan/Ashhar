@@ -7,11 +7,12 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.util.tracker.ServiceTracker;
 import weightconverterservice.WeightService;
+import currencyconvertorservice.CurrencyService;
 import java.util.Scanner;
 
 //Main Core Service
 public class Activator implements BundleActivator {    
-	private static ServiceReference lengthServiceReference, weightServiceReference;	
+	private static ServiceReference lengthServiceReference, weightServiceReference, currencyServiceReference;	
 	private static BundleContext bundleContext;
 	@Override
 	public void start(BundleContext bundleContext) throws Exception {
@@ -26,27 +27,40 @@ public class Activator implements BundleActivator {
 	}
 
 	private static class ConverterServiceImpl implements ConverterService{
+		private LengthService lengthService;
+		private WeightService weightService;
+		private CurrencyService currencyService;
 		@Override
 		public void getConverterService() {
-			int count = 1;
 			Scanner scanner = new Scanner(System.in);
+			try {
 			lengthServiceReference = bundleContext.getServiceReference(LengthService.class.getName());
-			LengthService lengthService = (LengthService) bundleContext.getService(lengthServiceReference);
+			lengthService = (LengthService) bundleContext.getService(lengthServiceReference);
 			
 			weightServiceReference = bundleContext.getServiceReference(WeightService.class.getName());
-			WeightService weightService = (WeightService) bundleContext.getService(weightServiceReference);
+		    weightService = (WeightService) bundleContext.getService(weightServiceReference);
+			
+			currencyServiceReference = bundleContext.getServiceReference(CurrencyService.class.getName());
+			currencyService = (CurrencyService) bundleContext.getService(currencyServiceReference);
 			
 			System.out.println("Select the Service");
 			if(lengthService != null)
 				System.out.println( "1.Length Converter Service");
 			if(weightService != null)
 				System.out.println( "2.Weight Converter Service");
+			if(currencyService != null)
+				System.out.println( "3.Currency Converter Service");
 			int input = scanner.nextInt();
 			if(input == 1)
 				lengthService.publishLengthService();
 			else if (input == 2) {
 				weightService.publishWeightService();
+			}else if(input == 3){
+				currencyService.publishCurrencyService();
 			}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}	
 		}
 	}
 }

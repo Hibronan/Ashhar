@@ -15,9 +15,13 @@ public class Activator implements BundleActivator {
 	
 	@Override
 	public void start(BundleContext bundleContext) throws Exception {
+		try {
 		serviceReference = bundleContext.getServiceReference(ConverterService.class.getName());
 		ConverterService converterService = (ConverterService) bundleContext.getService(serviceReference);
 		converterService.getConverterService();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
