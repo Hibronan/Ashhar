@@ -12,13 +12,15 @@ import converterservice.ConverterService;
 //Subscriber Service
 public class Activator implements BundleActivator {
 	private ServiceReference serviceReference;	
-	
 	@Override
 	public void start(BundleContext bundleContext) throws Exception {
 		try {
 		serviceReference = bundleContext.getServiceReference(ConverterService.class.getName());
 		ConverterService converterService = (ConverterService) bundleContext.getService(serviceReference);
-		converterService.getConverterService();
+		if(converterService != null)
+			converterService.getConverterService();
+		else
+			System.out.println("Converter Service is not available");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -28,5 +30,4 @@ public class Activator implements BundleActivator {
 	public void stop(BundleContext bundleContext) throws Exception {
 		System.out.println("Subscriber Stopped");
 	}
-
 }

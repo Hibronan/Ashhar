@@ -9,38 +9,26 @@ public class Activator implements BundleActivator {
 
 	private static BundleContext context;
 
-	static BundleContext getContext() {
-		return context;
-	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
-	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		System.out.println("Time Service Started");
 		bundleContext.registerService(TimeService.class.getName(), new TimeServiceImpl(), null);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
-	 */
 	public void stop(BundleContext bundleContext) throws Exception {
 		System.out.println("Time Service Stopped");
 	}
 	
 	private static class TimeServiceImpl implements TimeService {
-
 		@Override
 		public void publishTimeService() {
 			System.out.println("Select the Time Service Conversion\n"
-					+ "1.Seconds to Miliseconds"
-					+ "2.Miliseconds to Seconds"
-					+ "3.Minutes to Seconds"
-					+ "4.Seconds to Minutes"
-					+ "5.Hours to Minutes"
-					+ "6.Minutes to Hours");
+					+ "1.Seconds to Miliseconds\n"
+					+ "2.Miliseconds to Seconds\n"
+					+ "3.Minutes to Seconds\n"
+					+ "4.Seconds to Minutes\n"
+					+ "5.Hours to Minutes\n"
+					+ "6.Minutes to Hours\nstar");
 			
 			Scanner scanner = new Scanner(System.in);
 			int input = scanner.nextInt();
